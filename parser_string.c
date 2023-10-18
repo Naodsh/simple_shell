@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * parser_string - tokinezes strings into an array of string
+ * parser_strings - tokinezes strings into an array of string
  * @line: strings
  *
  * Return: array of string
