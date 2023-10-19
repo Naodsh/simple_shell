@@ -35,7 +35,7 @@ typedef struct built_in
 
 
 void shell_interactive(char *name);
-void shell_non_interactive(char *name);
+void shell_non_interactive(char *name, char *input_file);
 char *read_input(void);
 char **parser_strings(char *command);
 int cd_f(char **args);
@@ -44,7 +44,7 @@ int exit_f(char **args);
 int execute_cmd(char **argv, char *name);
 int sys_call(char **args, char *name);
 int access_cmd(char *full_path, char **args);
-
+char *read_line_from_file(FILE *inputFile);
 #endif
 
 

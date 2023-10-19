@@ -6,27 +6,31 @@
  *
  * Return: void
  */
-void shell_non_interactive(char *name)
+void shell_non_interactive(char *name, char *input_file)
 {
 	char *line;
 	char **args;
 	int status;
-	ssize_t read;
-	size_t len = 0;
 
-	while ((read = getline(&line, &len, stdin)) != -1)
+	FILE *file = fopen(input_file, "r");
+
+	if  (file == NULL)
 	{
-		if (line[read - 1] == '\n')
-			line[read - 1] = '\0';
+		perror("Error opening file");
+		exit(EXIT_FAILURE);
+	}
 
+	while ((line = read_line_from_file(file)) != NULL)
+	{
 		args = parser_strings(line);
 		status = execute_cmd(args, name);
+		free(line);
 		free(args);
 
 		if (status >= 0)
 		{
-			free(line);
 			exit(status);
 		}
 	}
+	fclose(file);
 }

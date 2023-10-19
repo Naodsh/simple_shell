@@ -7,14 +7,23 @@
  *
  * Return: an intiger
  */
-int main(int argc, char *args[])
+int main(int argc, char *argv[])
 {
-	int fd = STDIN_FILENO;
+	if (argc == 2)
+	{
 
-	if (isatty(fd) == 1)
-		shell_interactive(args[argc - 1]);
+		shell_non_interactive(argv[0], argv[1]);
+	}
+	else if (argc == 1)
+	{
+
+		shell_interactive(argv[0]);
+	}
 	else
-		shell_non_interactive(args[argc - 1]);
+	{
+		printf("Usage: %s [input_file]\n", argv[0]);
+		exit(EXIT_FAILURE);
+	}
 
 	return (0);
 }
