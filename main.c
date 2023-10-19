@@ -3,7 +3,7 @@
 /**
  * main - start of function
  * @argc: number of argument
- * @args: an array string arguments
+ * @argv: an array string arguments
  *
  * Return: an intiger
  */
