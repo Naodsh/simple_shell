@@ -23,7 +23,7 @@ int execute_cmd(char **argv, char *name)
 	}
 
 	for (ind = 0; ind < sizeof(built_in_list) /
-			sizeof(struct built_in); ind++)
+			sizeof(built_in); ind++)
 	{
 		if (strcmp(argv[0], built_in_list[ind].name) == 0)
 		{
