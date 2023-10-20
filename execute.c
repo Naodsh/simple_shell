@@ -14,7 +14,9 @@ int execute_cmd(char **argv, char *name)
 	built_in built_in_list[] = {
 		{"exit", exit_f},
 		{"env", env_f},
-		{"cd", cd_f}
+		{"cd", cd_f},
+		{"setenv", set_env},
+		{"unsetenv", unset_env}
 	};
 
 	if (!argv)

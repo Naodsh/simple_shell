@@ -45,6 +45,9 @@ int execute_cmd(char **argv, char *name);
 int sys_call(char **args, char *name);
 int access_cmd(char *full_path, char **args);
 char *read_line_from_file(FILE *inputFile);
+int set_env(char **args);
+int unset_env(char **args);
+
 #endif
 
 

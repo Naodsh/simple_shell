@@ -1,26 +1,45 @@
 #include "main.h"
-
 /**
- * cd_f - changes the working dir
+ * cd_f - changes the working directory and updates PWD
  * @args: directory
  *
- * Return: integer
+ * Return: 0 on success, -1 on failure
  */
 int cd_f(char **args)
 {
-	if (args[1] == NULL)
+	char *new_dir, *current_dir;
+
+	if (args[1] == NULL || strcmp(args[1], "~") == 0)
 	{
-		perror("argument expected to cd\n");
+		new_dir = getenv("HOME");
+	}
+	else if (strcmp(args[1], "-") == 0)
+	{
+		new_dir = getenv("OLDPWD");
 	}
 	else
 	{
-		if (chdir(args[1]) != 0)
-		{
-			perror("error: changing dir\n");
-		}
+		new_dir = args[1];
 	}
+	current_dir = getcwd(NULL, 0);
+	if (new_dir == NULL || current_dir == NULL)
+	{
+		perror("getcwd or getenv");
+		return (-1);
+	}
+	if (setenv("OLDPWD", current_dir, 1) != 0)
+	{
+		perror("setenv OLDPWD");
+		return (-1);
+	}
+	if (chdir(new_dir) != 0)
+	{
+		perror("error: changing directory");
+		return (-1);
+	}
+	free(current_dir);
 
-	return (-1);
+	return (0);
 }
 
 /**
