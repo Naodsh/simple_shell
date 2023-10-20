@@ -31,7 +31,7 @@ int cd_f(char **args)
  */
 int exit_f(char **args)
 {
-	void(srgs);
+	void(args);
 
 	return (0);
 }
