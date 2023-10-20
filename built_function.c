@@ -31,9 +31,14 @@ int cd_f(char **args)
  */
 int exit_f(char **args)
 {
-	void(args);
-
-	return (0);
+	if (args[1])
+	{
+		return (atoi(args[1]));
+	}
+	else
+	{
+		return (0);
+	}
 }
 
 /**
