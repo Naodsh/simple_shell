@@ -47,7 +47,7 @@ int access_cmd(char *full_path, char **args);
 char *read_line_from_file(FILE *inputFile);
 int set_env(char **args);
 int unset_env(char **args);
-
+void handle_ctrlc(int n);
 #endif
 
 

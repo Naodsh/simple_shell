@@ -15,6 +15,7 @@ void shell_interactive(char *name)
 	while (1)
 	{
 		write(0, "$ ", 2);
+		signal(SIGINT, handle_ctrlc);
 		line = read_input();
 		args = parser_strings(line);
 		status = execute_cmd(args, name);
